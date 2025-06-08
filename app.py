@@ -1,3 +1,5 @@
+import os
+
 import streamlit as st
 
 st.markdown("""
@@ -61,7 +63,13 @@ batarya_turleri = {
     "Özel / Manuel": None
 }
 
-st.image("assets/logo.png", width=150)
+logo_path = os.path.join(os.path.dirname(__file__), "assets", "logo.png")
+
+if os.path.exists(logo_path):
+    st.image(logo_path, width=150)
+else:
+    st.warning("Logo bulunamadı.")
+
 st.title(metin("🔋 Batarya Konfigürasyon Hesaplayıcı", "🔋 Battery Configuration Calculator"))
 
 # 🔌 Batarya türü seçimi
